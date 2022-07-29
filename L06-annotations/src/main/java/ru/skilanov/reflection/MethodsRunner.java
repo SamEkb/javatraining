@@ -29,7 +29,7 @@ public class MethodsRunner {
 
             currentTestResults.add(launchPreparatoryOrFinalMethods(clazz, newInstance, Before.class));
 
-            if (!currentTestResults.contains(FAILED.name())) {
+            if (!currentTestResults.contains(failed)) {
                 currentTestResults.add(launchTestMethod(method, newInstance));
             }
 
