@@ -1,0 +1,107 @@
+G1GC results before optimization:
+heap size: 256 speed: java.lang.OutOfMemoryError: Java heap space
+heap size: 512 speed: spend msec:24133, sec:24
+heap size: 768 speed: spend msec:22527, sec:22
+heap size: 1024 speed: spend msec:22441, sec:22
+heap size: 1280 speed: spend msec:21589, sec:21
+heap size: 1536 speed: spend msec:21309, sec:21
+heap size: 1792 speed: spend msec:19909, sec:19 Best results
+heap size: 2048 speed: spend msec:20568, sec:20
+
+G1GC results after optimization:
+heap size: 256 speed: spend msec:6679, sec:6
+heap size: 512 speed: spend msec:4425, sec:4 Best results
+heap size: 768 speed: spend msec:4299, sec:4
+heap size: 1024 speed: spend msec:4226, sec:4
+heap size: 1280 speed: spend msec:4548, sec:4
+heap size: 1536 speed: spend msec:4354, sec:4
+heap size: 1792 speed: spend msec:4541, sec:4
+heap size: 2048 speed: spend msec:4312, sec:4
+
+-------------------------------------------------------------------------------
+
+ParallelGC results before optimization:
+heap size: 256 speed: java.lang.OutOfMemoryError: GC overhead limit exceeded
+heap size: 512 speed: spend msec:60760, sec:60
+heap size: 768 speed: spend msec:51154, sec:51
+heap size: 1024 speed: spend msec:45247, sec:45
+heap size: 1280 speed: spend msec:39465, sec:39
+heap size: 1536 speed: spend msec:36580, sec:36
+heap size: 1792 speed: spend msec:32874, sec:32
+heap size: 2048 speed: spend msec:30514, sec:30 Best results
+
+ParallelGC results after optimization:
+heap size: 256 speed: spend msec:26180, sec:26
+heap size: 512 speed: spend msec:12829, sec:12
+heap size: 768 speed: spend msec:6531, sec:6
+heap size: 1024 speed: spend msec:3429, sec:3 Best results
+heap size: 1280 speed: spend msec:3445, sec:3
+heap size: 1536 speed: spend msec:3206, sec:3
+heap size: 1792 speed: spend msec:3206, sec:3
+heap size: 2048 speed: spend msec:3467, sec:3
+
+-------------------------------------------------------------------------------
+
+SerialGC results before optimization:
+heap size: 256 speed: java.lang.OutOfMemoryError: Java heap space
+heap size: 512 speed: spend msec:27666, sec:27
+heap size: 768 speed: spend msec:24119, sec:24
+heap size: 1024 speed: spend msec:19925, sec:19
+heap size: 1280 speed: spend msec:18811, sec:18
+heap size: 1536 speed: spend msec:17805, sec:17
+heap size: 1792 speed: spend msec:17148, sec:17
+heap size: 2048 speed: spend msec:15945, sec:15 Best results
+
+SerialGC results after optimization:
+heap size: 256 speed: spend msec:6663, sec:6
+heap size: 512 speed: spend msec:4839, sec:4
+heap size: 768 speed: spend msec:4620, sec:4
+heap size: 1024 speed: spend msec:3624, sec:3 Best results
+heap size: 1280 speed: spend msec:3476, sec:3
+heap size: 1536 speed: spend msec:3712, sec:3
+heap size: 1792 speed: spend msec:3454, sec:3
+heap size: 2048 speed: spend msec:3503, sec:3
+
+-------------------------------------------------------------------------------
+
+ConcMarkSweepGC results before optimization:
+heap size: 256 speed: java.lang.OutOfMemoryError: Java heap space
+heap size: 512 speed: spend msec:24218, sec:24
+heap size: 768 speed: spend msec:22562, sec:22
+heap size: 1024 speed: spend msec:21900, sec:21
+heap size: 1280 speed: spend msec:21570, sec:21
+heap size: 1536 speed: spend msec:21023, sec:21
+heap size: 1792 speed: spend msec:19864, sec:19 Best results
+heap size: 2048 speed: spend msec:22287, sec:22
+
+ConcMarkSweepGC results after optimization:
+heap size: 256 speed: spend msec:5357, sec:5
+heap size: 512 speed: spend msec:4427, sec:4 Best results
+heap size: 768 speed: spend msec:4239, sec:4
+heap size: 1024 speed: spend msec:4645, sec:4
+heap size: 1280 speed: spend msec:4640, sec:4
+heap size: 1536 speed: spend msec:4458, sec:4
+heap size: 1792 speed: spend msec:4526, sec:4
+heap size: 2048 speed: spend msec:4620, sec:4
+
+-------------------------------------------------------------------------------
+
+ZGC results before optimization:
+heap size: 256 speed: java.lang.OutOfMemoryError: Java heap space
+heap size: 512 speed: spend msec:28252, sec:28
+heap size: 768 speed: spend msec:18840, sec:18
+heap size: 1024 speed: spend msec:9782, sec:9 Best results
+heap size: 1280 speed: spend msec:10664, sec:10
+heap size: 1536 speed: spend msec:11165, sec:11
+heap size: 1792 speed: spend msec:9600, sec:9
+heap size: 2048 speed: spend msec:9684, sec:9
+
+ZGC results after optimization:
+heap size: 256 speed: spend msec:4742, sec:4
+heap size: 512 speed: spend msec:3398, sec:3 Best results
+heap size: 768 speed: spend msec:3472, sec:3
+heap size: 1024 speed: spend msec:3382, sec:3
+heap size: 1280 speed: spend msec:3465, sec:3
+heap size: 1536 speed: spend msec:3484, sec:3
+heap size: 1792 speed: spend msec:3212, sec:3
+heap size: 2048 speed: spend msec:3102, sec:3
