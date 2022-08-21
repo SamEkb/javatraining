@@ -7,5 +7,7 @@ public interface TestLoggingInterface {
 
     void calculation(int x, int y);
 
+    void calculation(String x, int y);
+
     void divide(int param);
 }

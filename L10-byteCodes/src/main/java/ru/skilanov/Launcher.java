@@ -7,6 +7,7 @@ public class Launcher {
         var testLogging = Ioc.createLoggingClass();
         testLogging.calculation(88);
         testLogging.calculation(1,2);
+        testLogging.calculation("test", 1);
         testLogging.divide(1);
     }
 }

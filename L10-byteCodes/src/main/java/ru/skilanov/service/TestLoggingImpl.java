@@ -18,6 +18,12 @@ public class TestLoggingImpl implements TestLoggingInterface {
 
     @Log
     @Override
+    public void calculation(String x, int y) {
+
+    }
+
+    @Log
+    @Override
     public void divide(int param) {
 
     }
