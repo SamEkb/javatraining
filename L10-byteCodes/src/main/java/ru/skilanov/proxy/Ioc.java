@@ -17,13 +17,13 @@ public class Ioc {
     public TestLoggingInterface createLoggingClass(TestLoggingInterface testLoggingInterface) {
         var handler = new CustomInvocationHandler(testLoggingInterface);
 
-        getAnnotatedMethods(testLoggingInterface);
+        addAnnotatedMethods(testLoggingInterface);
 
         return (TestLoggingInterface) Proxy.newProxyInstance(Ioc.class.getClassLoader(),
                 new Class<?>[]{TestLoggingInterface.class}, handler);
     }
 
-    private void getAnnotatedMethods(TestLoggingInterface testLoggingInterface) {
+    private void addAnnotatedMethods(TestLoggingInterface testLoggingInterface) {
         Stream.of(testLoggingInterface.getClass().getDeclaredMethods())
                 .filter(it -> it.isAnnotationPresent(Log.class))
                 .forEach(annotatedMethods::add);
