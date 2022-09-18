@@ -1,4 +1,4 @@
-package ru.skilanov.enums;
+package ru.skilanov.atmconstants;
 
 public enum CurrencyDenomination {
     TEN(10),

@@ -2,32 +2,33 @@ package ru.skilanov.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.skilanov.enums.CurrencyDenomination;
 import ru.skilanov.exceptions.NotEnoughMoneyException;
 import ru.skilanov.exceptions.WrongSumException;
-import ru.skilanov.model.Atm;
+import ru.skilanov.model.AtmCurrencyStore;
+import ru.skilanov.validators.AtmValidator;
+import ru.skilanov.validators.AtmValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.skilanov.enums.CurrencyDenomination.*;
+import static ru.skilanov.atmconstants.CurrencyDenomination.*;
 
 public class AtmServiceImplTest {
 
-    private Atm atm;
     private AtmService atmService;
 
     @BeforeEach
     public void setUp() {
-        atm = new Atm();
-        atmService = new AtmServiceImpl(atm);
-        atm.addCell(TEN.getValue(), 10);
-        atm.addCell(FIFTY.getValue(), 20);
-        atm.addCell(ONE_HUNDRED.getValue(), 30);
-        atm.addCell(TWO_HUNDREDS.getValue(), 40);
-        atm.addCell(FIVE_HUNDREDS.getValue(), 50);
-        atm.addCell(ONE_THOUSAND.getValue(), 60);
-        atm.addCell(TWO_THOUSANDS.getValue(), 70);
-        atm.addCell(FIVE_THOUSANDS.getValue(), 80);
+        AtmCurrencyStore atmCurrencyStore = new AtmCurrencyStore();
+        AtmValidator atmValidator = new AtmValidatorImpl();
+        atmService = new AtmServiceImpl(atmValidator, atmCurrencyStore);
+        atmCurrencyStore.addCell(TEN.getValue(), 10);
+        atmCurrencyStore.addCell(FIFTY.getValue(), 20);
+        atmCurrencyStore.addCell(ONE_HUNDRED.getValue(), 30);
+        atmCurrencyStore.addCell(TWO_HUNDREDS.getValue(), 40);
+        atmCurrencyStore.addCell(FIVE_HUNDREDS.getValue(), 50);
+        atmCurrencyStore.addCell(ONE_THOUSAND.getValue(), 60);
+        atmCurrencyStore.addCell(TWO_THOUSANDS.getValue(), 70);
+        atmCurrencyStore.addCell(FIVE_THOUSANDS.getValue(), 80);
     }
 
     @Test
@@ -45,7 +46,7 @@ public class AtmServiceImplTest {
 
     @Test
     void shouldContributeRightAmount() {
-        atmService.contributeMoney(CurrencyDenomination.FIFTY, 11);
+        atmService.contributeMoney(FIFTY, 11);
         var result = atmService.getBalance();
         assertEquals(664600, result);
     }
