@@ -19,7 +19,7 @@ public class FileSerializer implements Serializer {
         try (var writer = new BufferedWriter(new FileWriter(this.fileName))) {
             writer.write(new Gson().toJson(data));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FileProcessException(e);
         }
     }
 }

@@ -2,9 +2,9 @@ package ru.skilanov.dataprocessor;
 
 import ru.skilanov.model.Measurement;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class ProcessorAggregator implements Processor {
@@ -15,7 +15,7 @@ public class ProcessorAggregator implements Processor {
                 .collect(
                         Collectors.groupingBy(
                                 Measurement::getName,
-                                LinkedHashMap::new,
+                                TreeMap::new,
                                 Collectors.summingDouble(Measurement::getValue)
                         )
                 );
