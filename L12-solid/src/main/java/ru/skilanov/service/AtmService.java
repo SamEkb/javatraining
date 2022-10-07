@@ -1,6 +1,6 @@
 package ru.skilanov.service;
 
-import ru.skilanov.atmconstants.CurrencyDenomination;
+import ru.skilanov.atmconstants.Denomination;
 import ru.skilanov.exceptions.NotEnoughMoneyException;
 import ru.skilanov.exceptions.WrongSumException;
 
@@ -9,5 +9,5 @@ public interface AtmService {
 
     Integer getBalance();
 
-    void contributeMoney(CurrencyDenomination key, int amount);
+    void contributeMoney(Denomination key, int amount);
 }

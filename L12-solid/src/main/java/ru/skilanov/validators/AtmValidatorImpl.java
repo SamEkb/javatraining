@@ -3,7 +3,7 @@ package ru.skilanov.validators;
 import ru.skilanov.exceptions.NotEnoughMoneyException;
 import ru.skilanov.exceptions.WrongSumException;
 
-import static ru.skilanov.atmconstants.CurrencyDenomination.*;
+import static ru.skilanov.atmconstants.Denomination.*;
 
 public class AtmValidatorImpl implements AtmValidator {
 

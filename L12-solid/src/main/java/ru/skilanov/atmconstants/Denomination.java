@@ -1,6 +1,6 @@
 package ru.skilanov.atmconstants;
 
-public enum CurrencyDenomination {
+public enum Denomination {
     TEN(10),
     FIFTY(50),
     ONE_HUNDRED(100),
@@ -11,7 +11,7 @@ public enum CurrencyDenomination {
     FIVE_THOUSANDS(5000);
     private int value;
 
-    CurrencyDenomination(int value) {
+    Denomination(int value) {
         this.value = value;
     }
 

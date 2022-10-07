@@ -1,21 +1,23 @@
 package ru.skilanov.helpers;
 
-import static ru.skilanov.atmconstants.DenominationConstants.*;
+import ru.skilanov.atmconstants.Denomination;
+
+import static ru.skilanov.atmconstants.Denomination.*;
 
 public class CurrencyConverter {
 
-    public static int convertDenominationToCurrency(int amount, int currencyDenomination) {
+    public static int convertDenominationToCurrency(int amount, Denomination currencyDenomination) {
 
         return switch (currencyDenomination) {
-            case TEN -> amount * TEN;
-            case FIFTY -> amount * FIFTY;
-            case ONE_HUNDRED -> amount * ONE_HUNDRED;
-            case TWO_HUNDREDS -> amount * TWO_HUNDREDS;
-            case FIVE_HUNDREDS -> amount * FIVE_HUNDREDS;
-            case ONE_THOUSAND -> amount * ONE_THOUSAND;
-            case TWO_THOUSANDS -> amount * TWO_THOUSANDS;
-            case FIVE_THOUSANDS -> amount * FIVE_THOUSANDS;
-            default -> NULL;
+            case TEN -> amount * TEN.getValue();
+            case FIFTY -> amount * FIFTY.getValue();
+            case ONE_HUNDRED -> amount * ONE_HUNDRED.getValue();
+            case TWO_HUNDREDS -> amount * TWO_HUNDREDS.getValue();
+            case FIVE_HUNDREDS -> amount * FIVE_HUNDREDS.getValue();
+            case ONE_THOUSAND -> amount * ONE_THOUSAND.getValue();
+            case TWO_THOUSANDS -> amount * TWO_THOUSANDS.getValue();
+            case FIVE_THOUSANDS -> amount * FIVE_THOUSANDS.getValue();
+            default -> 0;
         };
     }
 }

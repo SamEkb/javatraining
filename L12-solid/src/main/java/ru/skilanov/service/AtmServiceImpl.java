@@ -1,15 +1,14 @@
 package ru.skilanov.service;
 
-import ru.skilanov.atmconstants.CurrencyDenomination;
+import ru.skilanov.atmconstants.Denomination;
 import ru.skilanov.exceptions.NotEnoughMoneyException;
 import ru.skilanov.exceptions.WrongSumException;
 import ru.skilanov.helpers.CurrencyConverter;
 import ru.skilanov.model.AtmCurrencyStore;
 import ru.skilanov.validators.AtmValidator;
 
-import static ru.skilanov.atmconstants.DenominationConstants.*;
-
 public class AtmServiceImpl implements AtmService {
+    public static final int NULL = 0;
     private final AtmValidator atmValidator;
     private final AtmCurrencyStore atmCurrencyStore;
 
@@ -35,47 +34,46 @@ public class AtmServiceImpl implements AtmService {
     }
 
     @Override
-    public void contributeMoney(CurrencyDenomination denomination, int amount) {
-        int key = denomination.getValue();
-        int currencyAmount = CurrencyConverter.convertDenominationToCurrency(amount, key);
+    public void contributeMoney(Denomination denomination, int amount) {
+        int currencyAmount = CurrencyConverter.convertDenominationToCurrency(amount, denomination);
         atmCurrencyStore.getAtmCells().put(
-                key, atmCurrencyStore.getAtmCells().get(key) + currencyAmount
+                denomination, atmCurrencyStore.getAtmCells().get(denomination) + currencyAmount
         );
     }
 
     private void withdraw(int amount) {
         var rest = amount;
         do {
-            if (rest >= FIVE_THOUSANDS) {
-                updateCell(rest, FIVE_THOUSANDS);
-                rest = rest % FIVE_THOUSANDS;
-            } else if (rest >= TWO_THOUSANDS) {
-                updateCell(rest, TWO_THOUSANDS);
-                rest = rest % TWO_THOUSANDS;
-            } else if (rest >= ONE_THOUSAND) {
-                updateCell(rest, ONE_THOUSAND);
-                rest = rest % ONE_THOUSAND;
-            } else if (rest >= FIVE_HUNDREDS) {
-                updateCell(rest, FIVE_HUNDREDS);
-                rest = rest % FIVE_HUNDREDS;
-            } else if (rest >= TWO_HUNDREDS) {
-                updateCell(rest, TWO_HUNDREDS);
-                rest = rest % TWO_HUNDREDS;
-            } else if (rest >= ONE_HUNDRED) {
-                updateCell(rest, ONE_HUNDRED);
-                rest = rest % ONE_HUNDRED;
-            } else if (rest >= FIFTY) {
-                updateCell(rest, FIFTY);
-                rest = rest % FIFTY;
-            } else if (rest >= TEN) {
-                updateCell(rest, TEN);
-                rest = rest % TEN;
+            if (rest >= Denomination.FIVE_THOUSANDS.getValue()) {
+                updateCell(rest, Denomination.FIVE_THOUSANDS);
+                rest = rest % Denomination.FIVE_THOUSANDS.getValue();
+            } else if (rest >= Denomination.TWO_THOUSANDS.getValue()) {
+                updateCell(rest, Denomination.TWO_THOUSANDS);
+                rest = rest % Denomination.TWO_THOUSANDS.getValue();
+            } else if (rest >= Denomination.ONE_THOUSAND.getValue()) {
+                updateCell(rest, Denomination.ONE_THOUSAND);
+                rest = rest % Denomination.ONE_THOUSAND.getValue();
+            } else if (rest >= Denomination.FIVE_HUNDREDS.getValue()) {
+                updateCell(rest, Denomination.FIVE_HUNDREDS);
+                rest = rest % Denomination.FIVE_HUNDREDS.getValue();
+            } else if (rest >= Denomination.TWO_HUNDREDS.getValue()) {
+                updateCell(rest, Denomination.TWO_HUNDREDS);
+                rest = rest % Denomination.TWO_HUNDREDS.getValue();
+            } else if (rest >= Denomination.ONE_HUNDRED.getValue()) {
+                updateCell(rest, Denomination.ONE_HUNDRED);
+                rest = rest % Denomination.ONE_HUNDRED.getValue();
+            } else if (rest >= Denomination.FIFTY.getValue()) {
+                updateCell(rest, Denomination.FIFTY);
+                rest = rest % Denomination.FIFTY.getValue();
+            } else if (rest >= Denomination.TEN.getValue()) {
+                updateCell(rest, Denomination.TEN);
+                rest = rest % Denomination.TEN.getValue();
             }
         } while (rest != NULL);
     }
 
-    private void updateCell(int rest, int denomination) {
-        int amount = rest / denomination;
+    private void updateCell(int rest, Denomination denomination) {
+        int amount = rest / denomination.getValue();
         atmCurrencyStore.getAtmCells().put(denomination, atmCurrencyStore.getAtmCells().get(denomination) - amount);
     }
 }

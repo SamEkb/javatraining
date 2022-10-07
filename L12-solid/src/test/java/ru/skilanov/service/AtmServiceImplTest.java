@@ -10,7 +10,7 @@ import ru.skilanov.validators.AtmValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.skilanov.atmconstants.CurrencyDenomination.*;
+import static ru.skilanov.atmconstants.Denomination.*;
 
 public class AtmServiceImplTest {
 
@@ -21,14 +21,14 @@ public class AtmServiceImplTest {
         AtmCurrencyStore atmCurrencyStore = new AtmCurrencyStore();
         AtmValidator atmValidator = new AtmValidatorImpl();
         atmService = new AtmServiceImpl(atmValidator, atmCurrencyStore);
-        atmCurrencyStore.addCell(TEN.getValue(), 10);
-        atmCurrencyStore.addCell(FIFTY.getValue(), 20);
-        atmCurrencyStore.addCell(ONE_HUNDRED.getValue(), 30);
-        atmCurrencyStore.addCell(TWO_HUNDREDS.getValue(), 40);
-        atmCurrencyStore.addCell(FIVE_HUNDREDS.getValue(), 50);
-        atmCurrencyStore.addCell(ONE_THOUSAND.getValue(), 60);
-        atmCurrencyStore.addCell(TWO_THOUSANDS.getValue(), 70);
-        atmCurrencyStore.addCell(FIVE_THOUSANDS.getValue(), 80);
+        atmCurrencyStore.addCell(TEN, 10);
+        atmCurrencyStore.addCell(FIFTY, 20);
+        atmCurrencyStore.addCell(ONE_HUNDRED, 30);
+        atmCurrencyStore.addCell(TWO_HUNDREDS, 40);
+        atmCurrencyStore.addCell(FIVE_HUNDREDS, 50);
+        atmCurrencyStore.addCell(ONE_THOUSAND, 60);
+        atmCurrencyStore.addCell(TWO_THOUSANDS, 70);
+        atmCurrencyStore.addCell(FIVE_THOUSANDS, 80);
     }
 
     @Test
