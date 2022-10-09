@@ -3,7 +3,6 @@ package ru.skilanov.service;
 import ru.skilanov.atmconstants.Denomination;
 import ru.skilanov.exceptions.NotEnoughMoneyException;
 import ru.skilanov.exceptions.WrongSumException;
-import ru.skilanov.helpers.CurrencyConverter;
 import ru.skilanov.model.AtmCurrencyStore;
 import ru.skilanov.validators.AtmValidator;
 
@@ -25,20 +24,12 @@ public class AtmServiceImpl implements AtmService {
 
     @Override
     public Integer getBalance() {
-        return atmCurrencyStore.getAtmCells()
-                .entrySet()
-                .stream()
-                .map(it -> CurrencyConverter.convertDenominationToCurrency(it.getValue(), it.getKey()))
-                .mapToInt(Integer::intValue)
-                .sum();
+        return atmCurrencyStore.getBalance();
     }
 
     @Override
     public void contributeMoney(Denomination denomination, int amount) {
-        int currencyAmount = CurrencyConverter.convertDenominationToCurrency(amount, denomination);
-        atmCurrencyStore.getAtmCells().put(
-                denomination, atmCurrencyStore.getAtmCells().get(denomination) + currencyAmount
-        );
+        atmCurrencyStore.contributeMoney(denomination, amount);
     }
 
     private void withdraw(int amount) {
