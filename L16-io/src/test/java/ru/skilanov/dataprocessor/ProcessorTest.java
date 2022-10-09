@@ -1,11 +1,8 @@
-package ru.otus.dataprocessor;
+package ru.skilanov.dataprocessor;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import ru.skilanov.dataprocessor.FileSerializer;
-import ru.skilanov.dataprocessor.ProcessorAggregator;
-import ru.skilanov.dataprocessor.ResourcesFileLoader;
 
 import java.io.File;
 import java.io.IOException;
