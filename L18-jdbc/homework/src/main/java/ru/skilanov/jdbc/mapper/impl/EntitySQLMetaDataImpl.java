@@ -56,24 +56,26 @@ public class EntitySQLMetaDataImpl<T> implements EntitySQLMetaData<T> {
     }
 
     private String getAllFieldsForInsertQuery(T object) {
-        return entityClassMetaData.getFieldsWithoutId().stream().filter(field -> {
+        return entityClassMetaData.getFieldsWithoutId().stream()
+                .filter(field -> {
                     field.setAccessible(true);
                     try {
                         return Objects.nonNull(field.get(object));
-                    } catch (IllegalAccessException ignored) {
-                        return false;
+                    } catch (Exception e) {
+                        throw new RuntimeException();
                     }
                 }).map(field -> "?")
                 .collect(Collectors.joining(","));
     }
 
     private String getAllEntityFieldsWithoutId(T object) {
-        return entityClassMetaData.getFieldsWithoutId().stream().filter(field -> {
+        return entityClassMetaData.getFieldsWithoutId().stream()
+                .filter(field -> {
                     field.setAccessible(true);
                     try {
                         return Objects.nonNull(field.get(object));
-                    } catch (IllegalAccessException ignored) {
-                        return false;
+                    } catch (Exception e) {
+                        throw new RuntimeException();
                     }
                 })
                 .map(Field::getName)

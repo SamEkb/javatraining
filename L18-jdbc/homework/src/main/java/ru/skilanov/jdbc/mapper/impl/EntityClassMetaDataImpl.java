@@ -19,6 +19,17 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
     private final Constructor<T> constructor;
     private final List<Field> fields;
 
+    public List<Field> getFieldsWithoutAnnotation() {
+        return fieldsWithoutAnnotation;
+    }
+
+    public Field getAnnotatedField() {
+        return annotatedField;
+    }
+
+    private final List<Field> fieldsWithoutAnnotation;
+    private final Field annotatedField;
+
     public EntityClassMetaDataImpl(Class<T> clazz) {
         this.className = clazz.getSimpleName();
         try {
@@ -26,7 +37,10 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
         } catch (NoSuchMethodException e) {
             throw new NoSuchConstructorException("Constructor does not exist");
         }
-        fields = List.of(clazz.getDeclaredFields());
+        this.fields = List.of(clazz.getDeclaredFields());
+        this.fieldsWithoutAnnotation = getFieldsWithoutId();
+        this.annotatedField = getIdField();
+
     }
 
     @Override
@@ -83,8 +97,8 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T> {
                     field.setAccessible(true);
                     try {
                         return field.get(object);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e);
+                    } catch (Exception e) {
+                        throw new RuntimeException();
                     }
                 })
                 .filter(Objects::nonNull)
